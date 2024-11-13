@@ -2,10 +2,12 @@ package random.game.tictactoe.composable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import random.game.tictactoe.GameState
 import random.game.tictactoe.Move
 import random.game.tictactoe.Player
@@ -23,6 +25,7 @@ fun TicTacToeBoard(
             Column {
                 rows.forEachIndexed { c, tile ->
                     TicTacToeTile(
+                        modifier = Modifier.size(80.dp),
                         tile = tile,
                         onClick = {
                             onMove(gameState.currentTurn, TicTacToeMove(r, c))

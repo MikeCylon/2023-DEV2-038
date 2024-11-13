@@ -19,11 +19,16 @@ class GameViewModel : ViewModel() {
             game.makeMove(player, position)
             _uiState.emit(game.boardState)
         }.onFailure {
-            //Handle unexpected failures
+            // Handle unexpected failures
             // Reset game on failure as a simple solution
             game.reset()
             _uiState.emit(game.boardState)
         }
+    }
+
+    fun reset() = viewModelScope.launch {
+        game.reset()
+        _uiState.emit(game.boardState)
     }
 
     companion object {

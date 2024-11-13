@@ -6,9 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,13 +40,48 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        TicTacToeBoard(
-                            modifier = Modifier.padding(innerPadding),
-                            gameState = gameState.value,
-                            onMove = { player, position ->
-                                viewModel.makeMove(player, position)
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            TicTacToeBoard(
+                                modifier = Modifier.padding(innerPadding),
+                                gameState = gameState.value,
+                                onMove = { player, position ->
+                                    viewModel.makeMove(player, position)
+                                }
+                            )
+                            // ideally we'd make more Composable but this is a simple exercise
+                            when (gameState.value.status) {
+                                GameStatus.WINNER_X -> {
+                                    Text(
+                                        text = "Congrats X",
+                                    )
+                                }
+                                GameStatus.WINNER_O -> {
+                                    Text(
+                                        text = "Congrats O",
+                                    )
+                                }
+                                GameStatus.DRAW -> {
+                                    Text(
+                                        text = "Too bad this is a draw",
+                                    )
+                                }
+                                GameStatus.ONGOING -> {
+                                    Text(
+                                        text = "Your turn player ${gameState.value.currentTurn}",
+                                    )
+                                }
                             }
-                        )
+                            IconButton(
+                                onClick = { viewModel.reset() },
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Refresh,
+                                    contentDescription = "Reset",
+                                )
+                            }
+                        }
                     }
                 }
             }
