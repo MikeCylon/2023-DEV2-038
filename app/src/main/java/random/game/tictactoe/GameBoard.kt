@@ -1,7 +1,19 @@
 package random.game.tictactoe
 
 enum class GameStatus {
-    ONGOING, DRAW, WINNER_X, WINNER_O
+    ONGOING, DRAW, WINNER_X, WINNER_O;
+
+    companion object {
+
+        fun from(tile: Tile): GameStatus {
+            return when (tile) {
+                Tile.X -> WINNER_X
+                Tile.O -> WINNER_O
+                else -> ONGOING
+            }
+        }
+
+    }
 }
 
 interface GameState {
@@ -10,17 +22,19 @@ interface GameState {
     val status: GameStatus
 }
 
-interface GameBoard : GameState, PlayerMove {
+interface GameBoard : PlayerMove {
 
     fun isPlayable(): Boolean
 
-    fun isTurn(player: Player)
+    fun isTurn(player: Player): Boolean
 
     fun isWinner(player: Player): Boolean
 
     fun isDraw(): Boolean
 
     fun isEnded(): Boolean
+
+    fun reset()
 }
 
 interface PlayerMove {

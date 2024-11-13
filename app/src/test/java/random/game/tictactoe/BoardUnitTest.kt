@@ -10,7 +10,7 @@ class BoardUnitTest {
 
     @Before
     fun before() {
-//        gameBoard = GameBoard() // TODO implement it
+        gameBoard = TicTacToeGame()
     }
 
     @Test
@@ -72,11 +72,11 @@ class BoardUnitTest {
     @Test
     fun `player x wins the game vertical`() {
         val moves: List<Pair<Move, Player>> = listOf<Pair<Move, Player>>(
-            TicTacToeMove(x = 0, y = 0) to Player.X,
-            TicTacToeMove(x = 1, y = 0) to Player.O,
-            TicTacToeMove(x = 0, y = 1) to Player.X,
-            TicTacToeMove(x = 1, y = 1) to Player.O,
-            TicTacToeMove(x = 0, y = 2) to Player.X,
+            TicTacToeMove(x = 1, y = 0) to Player.X,
+            TicTacToeMove(x = 2, y = 0) to Player.O,
+            TicTacToeMove(x = 1, y = 1) to Player.X,
+            TicTacToeMove(x = 2, y = 1) to Player.O,
+            TicTacToeMove(x = 1, y = 2) to Player.X,
         )
         moves.forEach { (move, player) ->
             gameBoard.makeMove(player, move)
@@ -102,8 +102,8 @@ class BoardUnitTest {
         }
         assertEquals(true, gameBoard.isEnded())
         assertEquals(false, gameBoard.isDraw())
-        assertEquals(false, gameBoard.isWinner(Player.O))
-        assertEquals(true, gameBoard.isWinner(Player.X))
+        assertEquals(false, gameBoard.isWinner(Player.X))
+        assertEquals(true, gameBoard.isWinner(Player.O))
     }
 
     @Test

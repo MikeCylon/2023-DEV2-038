@@ -9,6 +9,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import random.game.tictactoe.GameState
 import random.game.tictactoe.Move
 import random.game.tictactoe.Player
+import random.game.tictactoe.TicTacToeMove
 import random.game.tictactoe.ui.theme.TicTacToeTheme
 
 @Composable
@@ -18,12 +19,14 @@ fun TicTacToeBoard(
     modifier: Modifier = Modifier,
 ) {
     Row(modifier) {
-        gameState.board.forEach { rows ->
+        gameState.board.forEachIndexed { r, rows ->
             Column {
-                rows.forEach { tile ->
+                rows.forEachIndexed { c, tile ->
                     TicTacToeTile(
                         tile = tile,
-                        onClick = {}, //TODO events
+                        onClick = {
+                            onMove(gameState.currentTurn, TicTacToeMove(r, c))
+                        },
                     )
                 }
             }
