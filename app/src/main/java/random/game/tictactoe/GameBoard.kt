@@ -5,7 +5,7 @@ enum class GameStatus {
 }
 
 interface GameState {
-    val board: Array<Array<Tile>>
+    val board: List<List<Tile>>
     val currentTurn: Player
     val status: GameStatus
 }

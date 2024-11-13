@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "random.game.tictactoe"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "random.game.tictactoe"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
