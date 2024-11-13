@@ -23,7 +23,7 @@ fun TicTacToeTile(
             Icon(
                 modifier = modifier,
                 imageVector = Icons.Filled.Clear,
-                contentDescription = null,
+                contentDescription = "X",
             )
         }
 
@@ -31,7 +31,7 @@ fun TicTacToeTile(
             Icon(
                 modifier = modifier,
                 imageVector = Icons.Filled.Info,
-                contentDescription = null,
+                contentDescription = "O",
             )
         }
 
@@ -42,7 +42,7 @@ fun TicTacToeTile(
             ) {
                 Icon(
                     imageVector = Icons.Filled.Add,
-                    contentDescription = null,
+                    contentDescription = "EMPTY",
                 )
             }
         }

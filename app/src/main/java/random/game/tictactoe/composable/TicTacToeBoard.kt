@@ -17,7 +17,7 @@ fun TicTacToeBoard(
     onMove: (Player, Move) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row {
+    Row(modifier) {
         gameState.board.forEach { rows ->
             Column {
                 rows.forEach { tile ->
