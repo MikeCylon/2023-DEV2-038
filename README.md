@@ -2,6 +2,12 @@
 
 ![Alt text](images/Kata_TicTacToe.png?raw=true "Tic Tac Toe")
 
+# Build, Deploy & Run
+
+Import in Android Studio
+Press Play
+
+Enjoy the app - Empty tiles are marked with a '+' as a simple UI
 
 ## About this Kata
 
